@@ -50,9 +50,13 @@
 #include "ioctl.h"
 #include "commands.h"
 
+#include "androidcompat.h"
+
 #ifndef BLKDISCARD
 #define BLKDISCARD	_IO(0x12,119)
 #endif
+
+typedef struct blkid_struct_probe *blkid_probe;
 
 static int btrfs_scan_done = 0;
 

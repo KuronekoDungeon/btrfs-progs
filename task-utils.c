@@ -21,6 +21,7 @@
 #include <unistd.h>
 
 #include "task-utils.h"
+#include "androidcompat.h"
 
 struct task_info *task_init(void *(*threadfn)(void *), int (*postfn)(void *),
 			    void *thread_private)

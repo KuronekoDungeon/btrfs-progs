@@ -430,7 +430,7 @@ static int scrub_rename_file(const char *fn_base, const char *fn_local,
 /*
  * returns 0 if the key did not match (nothing was read)
  *         1 if the key did match (success)
- *        -1 if the key did match and an error occurred
+ *        -1 if the key did match and an error occured
  */
 static int scrub_kvread(int *i, int len, int avail, const char *buf,
 			const char *key, u64 *dest)
@@ -1515,7 +1515,7 @@ static int scrub_start(int argc, char **argv, int resume)
 	}
 
 	/* check for errors returned from the progress thread itself */
-	if (do_print && terr && terr != PTHREAD_CANCELED)
+	if (do_print && terr) // && terr != PTHREAD_CANCELED
 		error("recording progress failed: %s",
 			strerror(-PTR_ERR(terr)));
 

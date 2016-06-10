@@ -22,12 +22,13 @@ objects := ctree.c disk-io.c radix-tree.c extent-tree.c print-tree.c \
           extent-cache.c extent_io.c volumes.c utils.c repair.c \
           qgroup.c raid6.c free-space-cache.c list_sort.c props.c \
           ulist.c qgroup-verify.c backref.c string-table.c task-utils.c \
-          inode.c file.c find-root.c
+          inode.c file.c find-root.c free-space-tree.c
 cmds_objects := cmds-subvolume.c cmds-filesystem.c cmds-device.c cmds-scrub.c \
                cmds-inspect.c cmds-balance.c cmds-send.c cmds-receive.c \
                cmds-quota.c cmds-qgroup.c cmds-replace.c cmds-check.c \
                cmds-restore.c cmds-rescue.c chunk-recover.c super-recover.c \
-               cmds-property.c cmds-fi-usage.c
+               cmds-property.c cmds-fi-usage.c cmds-fi-du.c cmds-inspect-dump-tree.c \
+               cmds-inspect-dump-super.c cmds-inspect-tree-stats.c
 libbtrfs_objects := send-stream.c send-utils.c rbtree.c btrfs-list.c crc32c.c \
                    uuid-tree.c utils-lib.c rbtree-utils.c
 libbtrfs_headers := send-stream.h send-utils.h send.h rbtree.h btrfs-list.h \
