@@ -54,6 +54,8 @@
 #define BLKDISCARD	_IO(0x12,119)
 #endif
 
+typedef struct blkid_struct_probe *blkid_probe;
+
 static int btrfs_scan_done = 0;
 
 static char argv0_buf[ARGV0_BUF_SIZE] = "btrfs";
