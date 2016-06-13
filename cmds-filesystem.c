@@ -951,6 +951,8 @@ static int parse_compress_type(char *s)
 		return BTRFS_COMPRESS_ZLIB;
 	else if (strcmp(optarg, "lzo") == 0)
 		return BTRFS_COMPRESS_LZO;
+	else if (strcmp(optarg, "lz4") == 0)
+		return BTRFS_COMPRESS_LZ4;
 	else {
 		error("unknown compression type %s", s);
 		exit(1);
@@ -961,13 +963,13 @@ static const char * const cmd_filesystem_defrag_usage[] = {
 	"btrfs filesystem defragment [options] <file>|<dir> [<file>|<dir>...]",
 	"Defragment a file or a directory",
 	"",
-	"-v             be verbose",
-	"-r             defragment files recursively",
-	"-c[zlib,lzo]   compress the file while defragmenting",
-	"-f             flush data to disk immediately after defragmenting",
-	"-s start       defragment only from byte onward",
-	"-l len         defragment only up to len bytes",
-	"-t size        target extent size hint",
+	"-v                 be verbose",
+	"-r                 defragment files recursively",
+	"-c[zlib,lzo,lz4]   compress the file while defragmenting",
+	"-f                 flush data to disk immediately after defragmenting",
+	"-s start           defragment only from byte onward",
+	"-l len             defragment only up to len bytes",
+	"-t size            target extent size hint",
 	NULL
 };
 
