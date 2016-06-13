@@ -14,8 +14,8 @@ STATIC_CFLAGS := $(CFLAGS) -ffunction-sections -fdata-sections
 STATIC_LDFLAGS := -static -Wl,--gc-sections
 STATIC_LIBS := -luuid   -lblkid -luuid -lz   -llzo2 -L. -pthread
 
-btrfs_shared_libraries := libext2_uuid \
-			libext2_blkid
+btrfs_shared_libraries := libext2_uuid 
+#			libext2_blkid
 
 objects := ctree.c disk-io.c radix-tree.c extent-tree.c print-tree.c \
           root-tree.c dir-item.c file-item.c inode-item.c inode-map.c \
@@ -64,7 +64,7 @@ LOCAL_CFLAGS := $(STATIC_CFLAGS)
 #LOCAL_LDLIBS := $(LIBBTRFS_LIBS)
 #LOCAL_LDFLAGS := $(STATIC_LDFLAGS)
 LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
-LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libz
+LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libz libblkid-static
 LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
 
 LOCAL_EXPORT_C_INCLUDES := $(common_C_INCLUDES)
@@ -83,7 +83,7 @@ LOCAL_CFLAGS := $(STATIC_CFLAGS)
 #LOCAL_LDLIBS := $(LIBBTRFS_LIBS)
 #LOCAL_LDFLAGS := $(STATIC_LDFLAGS)
 LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
-LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static
+LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libblkid-static
 LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
 
 LOCAL_EXPORT_C_INCLUDES := $(common_C_INCLUDES)
@@ -103,7 +103,7 @@ LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
 #LOCAL_LDLIBS := $(LIBBTRFS_LIBS)
 #LOCAL_LDFLAGS := $(STATIC_LDFLAGS)
 LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
-LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static
+LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libblkid-static
 LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
 
 LOCAL_EXPORT_C_INCLUDES := $(common_C_INCLUDES)
