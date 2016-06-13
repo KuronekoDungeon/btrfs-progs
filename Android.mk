@@ -52,7 +52,7 @@ include $(BUILD_STATIC_LIBRARY)
 #----------------------------------------------------------
 include $(CLEAR_VARS)
 LOCAL_MODULE := btrfs
-#LOCAL_FORCE_STATIC_EXECUTABLE := true
+LOCAL_FORCE_STATIC_EXECUTABLE := true
 LOCAL_SRC_FILES := \
 		$(objects) \
 		$(cmds_objects) \
@@ -63,32 +63,35 @@ LOCAL_C_INCLUDES := $(common_C_INCLUDES)
 LOCAL_CFLAGS := $(STATIC_CFLAGS)
 #LOCAL_LDLIBS := $(LIBBTRFS_LIBS)
 #LOCAL_LDFLAGS := $(STATIC_LDFLAGS)
-LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
-LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libz libblkid-static
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
+#LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
+LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libz libblkid-static libext2_uuid_static  libc libcutils
+#LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
 
 LOCAL_EXPORT_C_INCLUDES := $(common_C_INCLUDES)
 #LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
+$(shell cp -fR $(TARGET_OUT)/bin/btrfs $(TARGET_RECOVERY_ROOT_OUT)/sbin/btrfs )
 
 #----------------------------------------------------------
+#build static executable for recovery
 include $(CLEAR_VARS)
 LOCAL_MODULE := mkfs.btrfs
 LOCAL_SRC_FILES := \
                 $(objects) \
                 mkfs.c
 
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+
+#LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+
 LOCAL_C_INCLUDES := $(common_C_INCLUDES)
 LOCAL_CFLAGS := $(STATIC_CFLAGS)
-#LOCAL_LDLIBS := $(LIBBTRFS_LIBS)
-#LOCAL_LDFLAGS := $(STATIC_LDFLAGS)
-LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
-LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libblkid-static
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
+LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libblkid-static libext2_uuid_static  libc libcutils
 
 LOCAL_EXPORT_C_INCLUDES := $(common_C_INCLUDES)
-#LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
+$(shell cp -fR $(TARGET_OUT)/bin/mkfs.btrfs $(TARGET_RECOVERY_ROOT_OUT)/sbin/mkfs.btrfs )
 
 #---------------------------------------------------------------
 include $(CLEAR_VARS)
@@ -97,16 +100,18 @@ LOCAL_SRC_FILES := \
                 $(objects) \
                 btrfstune.c
 
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+
 LOCAL_C_INCLUDES := $(common_C_INCLUDES)
 LOCAL_CFLAGS := $(STATIC_CFLAGS)
-LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
+#LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
 #LOCAL_LDLIBS := $(LIBBTRFS_LIBS)
 #LOCAL_LDFLAGS := $(STATIC_LDFLAGS)
-LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
-LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libblkid-static
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
+#LOCAL_SHARED_LIBRARIES := $(btrfs_shared_libraries)
+LOCAL_STATIC_LIBRARIES := libbtrfs liblzo-static libblkid-static libext2_uuid_static  libc libcutils
 
 LOCAL_EXPORT_C_INCLUDES := $(common_C_INCLUDES)
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
+$(shell cp -fR $(TARGET_OUT)/bin/btrfstune $(TARGET_RECOVERY_ROOT_OUT)/sbin/btrfstune )
 #--------------------------------------------------------------
