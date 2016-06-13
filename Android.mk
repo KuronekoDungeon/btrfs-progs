@@ -39,7 +39,7 @@ blkid_objects := partition/ superblocks/ topology/
 
 
 # external/e2fsprogs/lib is needed for uuid/uuid.h
-common_C_INCLUDES := $(LOCAL_PATH) external/e2fsprogs/lib/ external/lzo/include/ external/zlib/
+common_C_INCLUDES := $(LOCAL_PATH) external/libblkid/include/ external/e2fsprogs/lib/ external/lzo/include/ external/zlib/
 
 #----------------------------------------------------------
 include $(CLEAR_VARS)
